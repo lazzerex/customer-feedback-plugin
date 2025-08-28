@@ -1,4 +1,4 @@
-# 📝 Customer Feedback – WordPress Plugin
+# 📝 Customer Feedback - WordPress Plugin
 
 [![WordPress](https://img.shields.io/badge/WordPress-6.5+-blue.svg)](https://wordpress.org/) 
 [![PHP](https://img.shields.io/badge/PHP-7.4%2B-8892BF.svg?logo=php&logoColor=white)](https://www.php.net/) 
