@@ -66,10 +66,9 @@ Navigate to **Customer Feedback → Export** and click **Export to Excel**.
 
 ## 📸 Screenshots 
 
-<img width="846" height="623" alt="image" src="https://github.com/user-attachments/assets/b42cbd72-7834-4b44-b033-1987105345fd" />
+<img width="788" height="617" alt="image" src="https://github.com/user-attachments/assets/5c16cd32-0e7a-4b3d-9566-8ae28868ba0e" />
 
 <img width="801" height="887" alt="image" src="https://github.com/user-attachments/assets/246e3950-923c-4470-8022-14bbfc450722" />
-
 
 ---
 
