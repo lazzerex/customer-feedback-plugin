@@ -1,0 +1,716 @@
+/**
+ * Combined CSS file - Frontend and Feedback Form styles
+ * Prioritizing newer styles from feedback-form.css
+ */
+
+/* Font Face Definitions (from frontend.css - unique) */
+@font-face {
+    font-family: Averta;
+    src: url(../fonts/averta-regular.otf) format("opentype");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Averta;
+    src: url(../fonts/averta-regular-italic.otf) format("opentype");
+    font-style: italic;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Averta;
+    src: url(../fonts/averta-semibold.otf) format("opentype");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Averta;
+    src: url(../fonts/averta-bold.otf) format("opentype");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: Averta;
+    src: url(../fonts/averta-bold-italic.otf) format("opentype");
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: Averta;
+    src: url(../fonts/averta-black.otf) format("opentype");
+    font-weight: 900;
+}
+@font-face {
+  font-family: Averta;
+  src: url(../fonts/averta-regular.otf) format("opentype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: Averta;
+  src: url(../fonts/averta-regular-italic.otf) format("opentype");
+  font-style: italic;
+  font-weight: 400;
+}
+@font-face {
+  font-family: Averta;
+  src: url(../fonts/averta-semibold.otf) format("opentype");
+  font-weight: 600;
+}
+@font-face {
+  font-family: Averta;
+  src: url(../fonts/averta-bold.otf) format("opentype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: Averta;
+  src: url(../fonts/averta-bold-italic.otf) format("opentype");
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: Averta;
+  src: url(../fonts/averta-black.otf) format("opentype");
+  font-weight: 900;
+}
+
+/* Star Rating Styles */
+.star-rating-wrapper {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+}
+
+.star-rating-cell {
+    position: relative;
+    cursor: pointer;
+}
+
+.star-rating-cell input[type="radio"] {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    margin: 0;
+}
+
+.star-rating-label {
+    cursor: pointer;
+    display: block;
+    transition: all 0.2s ease;
+}
+
+.star {
+    font-size: 32px;
+    color: #ddd;
+    transition: all 0.2s ease;
+}
+
+.star svg {
+  --star-size: clamp(26px, 20px + 1.875vw, 44px);
+  width: var(--star-size);
+  height: var(--star-size);
+}
+
+/* Star hover and active states */
+.star-rating-wrapper:hover .star {
+    color: #ddd;
+}
+
+.star-rating-cell:hover .star,
+.star-rating-cell:hover ~ .star-rating-cell .star {
+    color: #ddd;
+}
+
+.star-rating-cell:hover .star,
+.star-rating-cell.active .star,
+.star-rating-cell.filled .star {
+    color: #ffb300;
+}
+
+/* Header stars */
+
+/* ============================= */
+/* Base Layout & Typography */
+/* ============================= */
+.vet-feedback-wrapper {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+}
+
+.vet-feedback-wrapper,
+.vet-feedback-wrapper h2,
+.vet-feedback-wrapper h3 {
+  font-family: Averta, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.vet-feedback-container .feedback-title {
+  color: #0154A5;
+  font-size: clamp(22px, 0.7083rem + 3.3333vw, 54px);text-align: center;
+  font-weight: 900;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.feedback-subtitle {
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  font-size: clamp(0.875rem, 0.7917rem + 0.4167vw, 1.125rem);
+}
+
+/* ============================= */
+/* Messages */
+/* ============================= */
+.feedback-messages {
+  margin-bottom: 20px;
+}
+
+.feedback-success,
+.feedback-error {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.feedback-success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.feedback-error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* ============================= */
+/* Form Fields */
+/* ============================= */
+.form-row {
+  display: flex;
+  gap: 20px;
+  align-items: baseline;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  position: relative;
+  flex: 1;
+  margin-bottom: 25px;
+  max-width: 350px;
+}
+
+.form-group.half { max-width: 350px; }
+.form-group:not(.half) { margin: 0px auto; }
+
+.form-group input,
+.form-group textarea {
+  border: 3px dotted #ffa726;
+  border-radius: 15px;
+  padding: 18px 16px 8px 16px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 18px;
+  background: white;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.form-group input { height: 55px; }
+.form-group textarea { min-height: 120px; resize: none; }
+
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: transparent; }
+
+/* Floating Labels */
+.floating-label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  padding: 0 8px;
+  color: #1565c0;
+  font-weight: 600;
+  font-size: 18px;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  z-index: 1;
+}
+.form-group textarea + .floating-label { top: 24px; }
+
+/* Floating state (shared for all inputs & textarea) */
+.form-group input:focus + .floating-label,
+.form-group input:not(:placeholder-shown) + .floating-label,
+.form-group input.has-value + .floating-label,
+.form-group input.was-focused + .floating-label,
+.form-group textarea:focus + .floating-label,
+.form-group textarea:not(:placeholder-shown) + .floating-label,
+.form-group textarea.has-value + .floating-label,
+.form-group textarea.was-focused + .floating-label {
+  top: 0;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #1565c0;
+  font-weight: 700;
+}
+
+/* Focus + Error states */
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #ff9800;
+  box-shadow: 0 0 0 3px rgba(255, 167, 38, 0.1);
+}
+/* .form-group input.error,
+.form-group textarea.error {
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+.form-group input.error + .floating-label,
+.form-group textarea.error + .floating-label {
+  color: #e74c3c;
+} */
+
+/* Error message */
+.field-error-message {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 5px;
+  font-weight: 500;
+  padding-left: 16px;
+}
+
+.comments-section .form-group {
+  max-width: 100%;
+  margin: 0;
+}
+.comments-section .form-group textarea { max-width: 100%; }
+
+/* ============================= */
+/* Overall Rating Section */
+/* ============================= */
+
+.overall-rating-section {
+  margin-bottom: -10px;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.overall-rating-section.error {
+  background: #fef5f5;
+  border: 2px solid #e74c3c;
+}
+
+.overall-rating-section h3 {
+  color: #1565c0;
+  font-size: 18px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.rating-subtitle {
+  margin-bottom: 20px;
+}
+
+/* ============================= */
+/* Emotion Rating */
+/* ============================= */
+.emotion-rating {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-direction: row-reverse;
+}
+
+.emotion-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  min-width: 90px;
+}
+
+.emotion-option:hover { background: #f0f7ff; transform: translateY(-2px); }
+.emotion-option.selected { background: #e3f2fd; border: 2px solid #1565c0; }
+
+.emotion-option span {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1565c0;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.emotion-image,
+.emotion-icon {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+.emotion-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+/* ============================= */
+/* Detailed Questions Section */
+/* ============================= */
+.detailed-questions-section {
+  margin: -10px 0 25px;
+  position: relative;
+  z-index: 2;
+}
+
+.detailed-questions-section h3 {
+  color: #1565c0;
+  font-size: 18px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  text-align: center;
+  background: #fff;
+  padding: 0 10px;
+  position: relative;
+  z-index: 3;
+  font-weight: bold;
+}
+
+.questions-subtitle {
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.questions-container {
+  position: relative;
+  border: 3px dotted #1565c0;
+  border-radius: 15px;
+  padding: 32px 20px;
+}
+
+/* Heart and Chat Icons */
+.heart-icon {
+  position: absolute;
+  top: -35px;
+  left: -35px;
+  z-index: 10;
+}
+
+.heart-circle {
+  width: 55px;
+  height: 55px;
+  background: transparent;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heart-image {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+}
+
+.feedback-icon {
+  position: absolute;
+  bottom: -35px;
+  right: -35px;
+  z-index: 10;
+}
+
+.feedback-bubble {
+  width: 70px;
+  height: 70px;
+  background: transparent;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-image {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+/* ============================= */
+/* Grid Rating Table */
+/* ============================= */
+.questions-grid {
+  display: grid;
+  grid-template-columns: 2fr repeat(5, 1fr);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.grid-header,
+.grid-row,
+.rating-cell-wrapper { display: contents; }
+
+.rating-header {
+  color: #1565c0;
+  font-size: 14px;
+  padding: 4px 8px;
+  text-align: center;
+}
+
+.rating-header:last-child { border-right: none; }
+
+.question-cell {
+  color: #1565c0;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.rating-cell {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+}
+
+.rating-cell:last-child { border-right: none; }
+
+.rating-cell input[type="radio"] {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.rating-box {
+  width: 35px;
+  height: 35px;
+  border: 2px solid #ffa726;
+  border-radius: 6px;
+  background: #fff;
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+.rating-cell:hover .rating-box { background: #fff3e0; border-color: #ff9800; transform: scale(1.05); }
+.rating-cell input[type="radio"]:checked + .rating-box { background: #ffa726; border-color: #ff9800; }
+
+.grid-row.error .question-cell { background: #fef5f5; color: #e74c3c; border-left: 4px solid #e74c3c; }
+.grid-row.error .rating-cell { background: #fef5f5; }
+
+/* ============================= */
+/* Submit Section & Success */
+/* ============================= */
+.submit-section { text-align: center; margin-top: 30px; }
+
+.submit-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  max-width: 600px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.submit-illustration { width: 250px; height: auto; }
+
+.submit-button {
+  background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+  white-space: nowrap;
+  min-width: 160px;
+  min-height: 45px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-family: inherit;
+}
+
+.submit-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #ffb300 0%, #ffa000 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(255,193,7,0.5);
+}
+
+.submit-button:disabled {
+  background: #ccc !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+  opacity: 0.6;
+}
+
+.submit-button.loading { color: transparent !important; background: #ccc !important; cursor: not-allowed; }
+.submit-button.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 24px; height: 24px;
+  margin: -12px;
+  border: 3px solid #fff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.submit-success-message {
+  margin-top: 20px;
+  padding: 20px;
+  background: #1565c0;
+  color: #fff;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  animation: slideIn 0.5s ease-out;
+}
+
+.success-icon {
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; font-weight: bold;
+}
+
+@keyframes slideIn { from { opacity: 0; transform: translateY(20px);} to { opacity:1; transform:translateY(0);} }
+
+/* ============================= */
+/* Responsive: Mobile & Small Screens */
+/* ============================= */
+@media (max-width: 768px) {
+
+   .star-rating-wrapper {
+      justify-content: space-between;
+      gap: 2px;
+    }
+
+    .star {
+      font-size: 27px;
+    }
+
+    .star-header {
+      display: none;
+    }
+  .emotion-option[data-value="5"] { order: 1; }  /* Tuyệt vời */
+  .emotion-option[data-value="4"] { order: 2; }  /* Rất hài lòng */
+  .emotion-option[data-value="3"] { order: 3; }  /* Hài lòng */
+  .emotion-option[data-value="2"] { order: 4; }  /* Bình thường */
+  .emotion-option[data-value="1"] { order: 5; }  /* Thất vọng */
+  .emotion-image, .emotion-icon { width: 45px; height: 45px; }
+  .emotion-option:first-child { grid-column: 1/3 }
+  .vet-feedback-wrapper { margin: 10px; padding: 20px; border-radius: 10px; }
+  .feedback-title { font-size: 28px; margin-bottom: 15px; }
+  .form-row { flex-direction: column; gap: 0 }
+  .emotion-rating { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; max-width: 300px; margin: 0 auto 20px; flex-direction: row; }
+  .questions-grid { display: block; border: none; }
+  .grid-header { display: none; }
+  .grid-row {
+    display: block;
+    padding: 16px 16px 8px 16px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+  }
+  .question-cell { border: none; padding: 0 0 5px; font-size: 14px; margin-bottom: 0px; }
+  .rating-cell-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 2px;
+    justify-content: space-between;
+  }
+  .rating-cell { display: flex; flex-direction: column; align-items: center; padding: 2px; flex: 1; min-height: 30px;  justify-content: center; }
+  .rating-box { width: 25px; height: 25px; margin: 0 auto 4px; display: block; flex-shrink: 0; }
+  .rating-cell::after { content: attr(data-label); font-size: 9px; color:#1565c0; font-weight:600; display:block; margin-top:2px; text-align: center; line-height: 1.1; height: 20px; display: none; align-items: center; justify-content: center; }
+  .rating-cell[data-label="Rất hài lòng"]::after {
+    content: "Rất\A hài lòng" !important;
+    white-space: pre-line;
+}
+  .submit-layout { flex-direction: column; gap: 20px; }
+  .submit-illustration { width: 180px; }
+
+  .form-group {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto 16px;
+  }
+  .form-group input,
+  .form-group textarea {
+    font-size: 16px;
+    padding: 16px 15px 8px;
+    width: 100%;
+    max-width: 100%;
+    height: 52px;
+  }
+  .floating-label { left: 15px; font-size: 16px; }
+  .form-group input:focus + .floating-label,
+  .form-group input:not(:placeholder-shown) + .floating-label,
+  .form-group textarea:focus + .floating-label,
+  .form-group textarea:not(:placeholder-shown) + .floating-label {
+    font-size: 13px;
+  }
+  .form-group textarea + .floating-label { top: 22px; }
+
+
+}
+@media (max-width: 480px) {
+  .form-group input {
+    height: 50px;
+    padding: 15px 12px 8px;
+  }
+  .floating-label { left: 12px; font-size: 15px; }
+  .form-group input:focus + .floating-label,
+  .form-group input:not(:placeholder-shown) + .floating-label,
+  .form-group textarea:focus + .floating-label,
+  .form-group textarea:not(:placeholder-shown) + .floating-label {
+    font-size: 12px;
+  }
+}
